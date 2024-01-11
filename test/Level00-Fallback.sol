@@ -9,7 +9,7 @@ contract POC is Test {
     Fallback public victim;
     Attacker public attacker;
 
-    function setup() public {
+    function setUp() public {
         victim = new Fallback();
         attacker = new Attacker(address(victim));
 
@@ -29,10 +29,15 @@ contract POC is Test {
             unicode"| => Victim's balance 🙂 %s 🙂",
             toEth(address(victim).balance)
         );
+        assert(victim.owner() != address(attacker));
+        console.log(
+            unicode"| => Victim's owner is still not the attacker, waiting for the exploitation begin....."
+        );
         console.log(
             unicode"| => Attacker's balance 👀 %s 👀",
             toEth(address(attacker).balance)
         );
+
         console.log("--------------------------------------------------------");
 
         console.log(unicode"\n\t💥💥💥💥 EXPLOITING... 💥💥💥💥\n");
@@ -42,6 +47,7 @@ contract POC is Test {
         // Conditions to fullfill
         assertEq(address(victim).balance, 0);
         assertEq(address(attacker).balance, 11 ether);
+        assertEq(victim.owner(), address(attacker));
 
         console.log("--------------------------------------------------------");
         console.log(
