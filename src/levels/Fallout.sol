@@ -1,8 +1,8 @@
 //? Claim ownership of the contract below to complete this level.
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
-import "openzeppelin-contracts-06/math/SafeMath.sol";
+import "openzeppelin-contracts-08/utils/math/SafeMath.sol";
 
 contract Fallout {
     using SafeMath for uint256;
@@ -11,7 +11,7 @@ contract Fallout {
 
     /* constructor */
     function Fal1out() public payable {
-        owner = msg.sender;
+        owner = payable(msg.sender);
         allocations[owner] = msg.value;
     }
 
@@ -30,7 +30,7 @@ contract Fallout {
     }
 
     function collectAllocations() public onlyOwner {
-        msg.sender.transfer(address(this).balance);
+        payable(msg.sender).transfer(address(this).balance);
     }
 
     function allocatorBalance(address allocator) public view returns (uint) {
