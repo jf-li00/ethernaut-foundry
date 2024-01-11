@@ -1,0 +1,6 @@
+forge-std/=lib/forge-std/src/
+@openzeppelin/=lib/openzeppelin@4.7.3/contracts/
+openzeppelin-contracts-08=lib/openzeppelin@4.7.3/contracts/
+openzeppelin-contracts-06=lib/openzeppelin@3.4.2/contracts/
+@levels/=src/levels
+@attacks/=attacks
