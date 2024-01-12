@@ -3,16 +3,20 @@ pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
 import "@levels/Fallback.sol";
+import "@levels/FallbackFactory.sol";
 import "@attacks/Level00-Fallback-Attacker.sol";
+
+import "../src/Ethernaut.sol";
 
 contract POC is Test {
     Fallback public victim;
     Attacker public attacker;
+    FallbackFactory public factory;
 
     function setUp() public {
+        factory = new FallbackFactory();
         victim = new Fallback();
         attacker = new Attacker(address(victim));
-
         vm.label(address(victim), "victim_contract");
         vm.label(address(attacker), "attacker_contract");
 
@@ -44,10 +48,12 @@ contract POC is Test {
 
         attacker.exploit();
 
-        // Conditions to fullfill
-        assertEq(address(victim).balance, 0);
-        assertEq(address(attacker).balance, 11 ether);
-        assertEq(victim.owner(), address(attacker));
+        assert(
+            factory.validateInstance(
+                payable(address(victim)),
+                address(attacker)
+            )
+        );
 
         console.log("--------------------------------------------------------");
         console.log(
