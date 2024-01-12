@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "@levels/Fallback.sol";
 import "@levels/FallbackFactory.sol";
-import "@attacks/Level00-Fallback-Attacker.sol";
+import "@attacks/Level01-Fallback-Attacker.sol";
 
 import "../src/Ethernaut.sol";
 
