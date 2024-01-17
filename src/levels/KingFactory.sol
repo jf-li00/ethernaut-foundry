@@ -23,7 +23,8 @@ contract KingFactory is Level {
         _player;
         King instance = King(_instance);
         (bool result, ) = address(instance).call{value: 0}("");
-        !result;
+        //* The call should fail according to the description of the level
+        require(!result);
         return instance._king() != address(this);
     }
 
