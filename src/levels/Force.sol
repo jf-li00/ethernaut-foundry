@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.13;
 
-contract Force {/*
+contract Force {
+    /*
 
                    MEOW ?
          /\_/\   /
@@ -9,4 +10,5 @@ contract Force {/*
   /~____  =ø= /
  (______)__m_m)
 
-*/}
+*/
+}
