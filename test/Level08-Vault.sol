@@ -24,6 +24,7 @@ contract POC is Test {
         vm.deal(address(attacker), 1 ether);
     }
 
+    /// This level does not need a contract to start exploiting.
     function test_exploit() public {
         console.log(
             unicode"\n   📚📚 All things reentrancy: basic exploitation\n"
