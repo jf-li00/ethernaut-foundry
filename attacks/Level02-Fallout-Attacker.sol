@@ -3,21 +3,11 @@ pragma solidity ^0.8.13;
 
 import "@levels/Fallout.sol";
 
-interface IVulnerable {
-    function allocate() external payable;
-
-    function sendAllocation(address payable allocator) external;
-
-    function collectAllocations() external;
-
-    function allocatorBalance(address allocator) external view returns (uint);
-}
-
 contract Attacker {
-    IVulnerable public target;
+    Fallout public target;
 
     constructor(address _target) payable {
-        target = IVulnerable(_target);
+        target = Fallout(_target);
     }
 
     receive() external payable {}

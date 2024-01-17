@@ -1,15 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.13;
 
-interface IVulnerable {
-    function prize() external view returns (uint);
-}
+import "@levels/King.sol";
 
 contract Attacker {
-    IVulnerable public target;
+    King public target;
 
     constructor(address _target) payable {
-        target = IVulnerable(_target);
+        target = King(payable(_target));
     }
 
     receive() external payable {

