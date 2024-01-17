@@ -27,9 +27,7 @@ contract POC is Test {
     }
 
     function test_exploit() public {
-        console.log(
-            unicode"\n   📚📚 All things reentrancy: basic exploitation\n"
-        );
+        console.log(unicode"\n   📚📚 Ethernaut Foundry: basic exploitation\n");
         console.log("--------------------------------------------------------");
         console.log(
             unicode"| => Victim's balance 🙂 %s 🙂",

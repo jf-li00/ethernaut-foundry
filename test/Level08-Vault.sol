@@ -26,9 +26,7 @@ contract POC is Test {
 
     /// This level does not need a contract to start exploiting.
     function test_exploit() public {
-        console.log(
-            unicode"\n   📚📚 All things reentrancy: basic exploitation\n"
-        );
+        console.log(unicode"\n   📚📚 Ethernaut Foundry: basic exploitation\n");
         console.log("--------------------------------------------------------");
 
         console.log(unicode"\n\t💥💥💥💥 EXPLOITING... 💥💥💥💥\n");
